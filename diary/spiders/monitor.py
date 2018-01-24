@@ -28,10 +28,10 @@ class MonitorSpider(scrapy.Spider):
 	
 	for i in response.css('li.diary-item'):
 		item= DiaryItem()
-		item['dlink']= response.url
+		item['diary_link']= response.url
         	item['title']= i.css('span.day::text').extract()[0]
-         	item['plink']= i.css('p.describe a::attr(href)').extract()[0]
-         	item['time']= i.css('div.date::text').extract()[0]
+         	item['product_link']= i.css('p.describe a::attr(href)').extract()[0]
+         	item['posts_time']= i.css('div.date::text').extract()[0]
          	coll = i.css('div.other-box a::text').extract()
 		item['views']= coll[0]
 		item['comments']= coll[1]
